@@ -1,0 +1,22 @@
+{
+  "name": "socialsquared",
+  "version": "1.0.0",
+  "description": "CRM for today.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wynncreations/SocialSquared.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wynncreations/SocialSquared/issues"
+  },
+  "homepage": "https://github.com/wynncreations/SocialSquared#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
