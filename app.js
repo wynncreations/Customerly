@@ -1,4 +1,5 @@
 var express = require("express"),
+    expressSession = require("express-session");
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
