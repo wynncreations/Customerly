@@ -53,10 +53,6 @@ app.use(passport.session());
 // passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
-
-
-
-
 //turn on server
 app.listen("3000", "localhost", function () {
     console.log("SocialSquared Sociably Connected");
