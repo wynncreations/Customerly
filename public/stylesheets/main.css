@@ -1,5 +1,12 @@
 .image{
     width: 500px;
-    height: 500px;
-    padding: 2% 2%;
+    height: 400px;
+    padding: 1% 1%;
+}
+body{
+    background-color: lightgrey;
+}
+
+.navbar-brand{
+    font-weight: 600;
 }
