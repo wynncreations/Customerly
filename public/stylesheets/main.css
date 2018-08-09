@@ -10,3 +10,7 @@ body{
 .navbar-brand{
     font-weight: 600;
 }
+
+#register-form{
+    margin:0 auto;
+}
