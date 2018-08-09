@@ -25,9 +25,9 @@ var options = {
     useNewUrlParser: true
 };
 
-mongoose.connect(process.env.DBPRODURL, options, function () {
+// mongoose.connect(process.env.DBPRODURL, options, function () {
 //     //mongoose.connection.db.dropDatabase();
-});
+// });
 
 //Connection to db.
 // var db = mongoose.connection;

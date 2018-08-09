@@ -1,12 +1,18 @@
 .image{
-    width: 500px;
+    width: 700px;
     height: 400px;
-    padding: 1% 1%;
 }
 body{
-    background-color: lightgrey;
+    background-color: white;
 }
 
-.navbar-brand{
-    font-weight: 600;
+.Nav-logo{
+    font-weight: 700;
+    font-family: Merriweather;
+    color: aqua;
+    font-size: 1.5em;
+}
+.row{
+    margin-left: 5%;
+    margin-top: 2%;
 }
