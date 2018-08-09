@@ -5,7 +5,8 @@ var express = require("express"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    
 
 app.use(express.static(__dirname + "/public"));
 
@@ -17,13 +18,16 @@ app.get("/",function(req,res){
 //     campgroundRoutes = require("./routes/campgrounds"),
 //     indexRoutes = require("./routes/index");
 
+var registerRoutes = require("./routes/register");
+app.use(registerRoutes);
+
 var options = {
     useNewUrlParser: true
 };
 
-// mongoose.connect("mongodb+srv://wynncreations:C0wb0y13@cluster0-ghrhm.mongodb.net/YelpCamp?retryWrites=true", options, function () {
+mongoose.connect(process.env.DBPRODURL, options, function () {
 //     //mongoose.connection.db.dropDatabase();
-// });
+});
 
 //Connection to db.
 // var db = mongoose.connection;
@@ -50,8 +54,8 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
+ //passport.use(new LocalStrategy(User.authenticate()));
+ //passport.serializeUser(User.serializeUser());
 // passport.deserializeUser(User.deserializeUser());
 
 //turn on server
