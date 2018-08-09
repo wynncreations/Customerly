@@ -16,3 +16,7 @@ body{
     margin-left: 5%;
     margin-top: 2%;
 }
+
+#register-form{
+    margin:0 auto;
+}

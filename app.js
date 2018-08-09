@@ -5,7 +5,9 @@ var express = require("express"),
     mongoose = require("mongoose"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
-    methodOverride = require("method-override"),
+    methodOverride = require("method-override");
+
+require("dotenv").config();
     
 
 app.use(express.static(__dirname + "/public"));
