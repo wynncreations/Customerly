@@ -17,10 +17,17 @@ body{
     margin-top: 2%;
 }
 
-#register-form{
+#login-form{
     margin:0 auto;
+    background-color: bisque;
 }
 
 .nav-link {
     color: white;
 }
+
+a:hover.nav-link {
+    text-decoration: none;
+}
+
+

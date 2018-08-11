@@ -27,6 +27,12 @@ var options = {
     useNewUrlParser: true
 };
 
+
+//Login route
+var loginRoutes = require("./routes/login");
+app.use(loginRoutes);
+
+
 // mongoose.connect(process.env.DBPRODURL, options, function () {
 //     //mongoose.connection.db.dropDatabase();
 // });
