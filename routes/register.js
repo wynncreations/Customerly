@@ -1,5 +1,7 @@
 var express = require("express");
 var User = require("../models/user");
+var passport = require("passport");
+var passport = require("passport");
 
 var router = express.Router({
     mergeParams: true
@@ -11,27 +13,28 @@ router.get("/register",function(req,res){
 
 //User is registering.
 router.post("/register",function(req,res){
-    //Check if username is already in use
-    User.find({email:req.params.email},(err,user)=>{
-        if(err){
-            console.log("Error connecting to DB: ",err);
+    //check for a user, if one found, redirect with already in use error.
+    var newUser = new User({username: req.body.user.email});
+    User.findOne({username: req.body.user.email},function(err,user){
+        //did we find anything?
+        if(user){
+            //found a user, redirect.
+            res.redirect("/register");
         }else{
-            if(!user){//No user found. Lets save.
-                User.save(req.params.user);
-            }else{//Found a user, redirect
-                console.log(req.params.user);
-                res.redirect(302,"/register");
-            }
+
+            passport.use(new LocalStrategy(newUser.authenticate()));
+            passport.serializeUser(newUser.serializeUser());
+            passport.deserializeUser(newUser.deserializeUser());
+
+
+            newUser.save(newUser,function(err){
+                passport.authenticate("local")(req, res, function (err) {
+                    req.flash("success", "Successfully logged in, " + newUser.username);
+                    res.redirect("/landing");
+                });
+            });
         }
     });
-
-
-
-
-
-    //return to registration page with error.
-
-    //If no user by this email, lets add to DB.
 });
 
 
