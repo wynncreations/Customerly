@@ -2,9 +2,6 @@
     width: 700px;
     height: 400px;
 }
-body{
-    background-color: white;
-}
 
 .Nav-logo{
     font-weight: 700;
@@ -22,12 +19,7 @@ body{
     background-color: bisque;
 }
 
-.nav-link {
-    color: white;
-}
 
 a:hover.nav-link {
     text-decoration: none;
 }
-
-
