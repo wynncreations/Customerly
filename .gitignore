@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-env
-=======
 node_modules/dotenv/tests/.env
->>>>>>> e3976f6b49828259e45c041cdf4627851dfe7d7a
+.env
