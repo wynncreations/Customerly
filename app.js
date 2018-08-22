@@ -33,7 +33,7 @@ var options = {
 var loginRoutes = require("./routes/login");
 app.use(loginRoutes);
 
-
+console.log(process.env.DBPRODURL);
  mongoose.connect(process.env.DBPRODURL, options, function () {
      //mongoose.connection.db.dropDatabase();
  });

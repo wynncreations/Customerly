@@ -19,6 +19,7 @@ router.post("/register",function(req,res){
             if(!user){//No user found. Lets save.
                 User.save(req.params.user);
             }else{//Found a user, redirect
+                console.log(req.params.user);
                 res.redirect(302,"/register");
             }
         }
