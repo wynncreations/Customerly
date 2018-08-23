@@ -1,28 +1,13 @@
 var express         = require("express"),
-    expressSession  = require("express-session");
     app             = express(),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
-    LocalStrategy   = require("passport-local"),
+    LocalStrategy   = require("passport-local").Strategy,
     methodOverride  = require("method-override");
     User            = require("./models/user");
     flash           = require("connect-flash");
  
-var options = {
-    useNewUrlParser: true
-};
-
-mongoose.connect(process.env.DEVURL, options, function () {
-    //mongoose.connection.db.dropDatabase();
-});
-
-//Connection to db.
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-    // we're connected!
-});
 
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
@@ -37,6 +22,21 @@ app.use(express.static(__dirname + "/public"));
  app.use(flash()); //include flash config so we can do     some messages
 
  //seedDB();
+
+ var options = {
+     useNewUrlParser: true
+ };
+mongoose.connect(process.env.DEVURL, options, function () {
+    //mongoose.connection.db.dropDatabase();
+});
+
+//Connection to db.
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+    // we're connected!
+});
+
  //Passort config
  app.use(require("express-session")({
      secret: "omg yes please work!",
@@ -51,9 +51,8 @@ app.use(express.static(__dirname + "/public"));
  passport.deserializeUser(User.deserializeUser());
 
 
-app.get("/",function(req,res){
-    res.render("landing");
-})
+
+
 
 // var commentRoutes = require("./routes/comments"),
 //     campgroundRoutes = require("./routes/campgrounds"),
@@ -64,6 +63,12 @@ app.use(registerRoutes);
 //Login route
 var loginRoutes = require("./routes/login");
 app.use(loginRoutes);
+
+
+app.get("/", function (req, res) {
+    res.render("landing");
+})
+
 
 //turn on server
 app.listen("3000", "localhost", function () {
