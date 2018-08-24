@@ -36,16 +36,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav navbar navbar-right ml-auto">
-                <li class="nav-item">
-                <a id="ourLink" class="nav-link" href="/register"> Register</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-                </li>
+                <% if(!currentUser){ %>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login </a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register"> Register</a></li>
+                <% } else{ %>
+                    <li class="nav-item"><a class="nav-link" href="#">Signed in as: <%= currentUser.username %></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <% } %>
             </ul>
             </div>     
         </nav>    
         
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <h1><%= error %></h1>
+            </div>    
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <h1><%= success %></h1>
+            </div>                      
+        <% } %>    
+    </div>

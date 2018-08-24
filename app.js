@@ -50,9 +50,13 @@ db.once('open', function () {
  passport.serializeUser(User.serializeUser());
  passport.deserializeUser(User.deserializeUser());
 
-
-
-
+ app.use(function (req, res, next) {
+     //console.log(req.user);
+     res.locals.currentUser = req.user;
+     res.locals.error = req.flash("error");
+     res.locals.success = req.flash("success");
+     next();
+ });
 
 // var commentRoutes = require("./routes/comments"),
 //     campgroundRoutes = require("./routes/campgrounds"),
