@@ -64,14 +64,12 @@ db.once('open', function () {
 
 var registerRoutes = require("./routes/register");
 app.use(registerRoutes);
-//Login route
 var loginRoutes = require("./routes/login");
 app.use(loginRoutes);
+var homeRoutes = require("./routes/home");
+app.use(homeRoutes);
 
 
-app.get("/", function (req, res) {
-    res.render("landing");
-})
 
 
 //turn on server
