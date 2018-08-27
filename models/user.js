@@ -5,7 +5,12 @@ var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
     initialCompleted: Boolean,
-    initialStep: Number
+    initialStep: Number,
+    redditLink: Boolean,
+    facebookLink: Boolean,
+    twitterLink: Boolean,
+    instagramLink: Boolean,
+    useDefault: Boolean
 });
 
 UserSchema.index({

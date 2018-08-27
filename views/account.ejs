@@ -1,11 +1,18 @@
 <% include ./partials/header %>
     <div class="container">
         <div class="row">
-            <p>Social<sup>2</sup> Account Settings Page for <%= currentUser.username%>.
+            <h1>Social<sup>2</sup> Account Settings Page for <%= currentUser.username%>.</h1>
         </div>
 
         <div>
             <p>Lets go ahead and link your first social media account to get started!</p>
+            <p>If you want to use only the default Reddit-Only view for now, click here. You will need to link your other social media accounts to include them in your view.</p>
+        </div>
+        <div class="card card-body bg-light col-md-4">
+            <p>Reddit Acccount Link?: <%= currentUser.redditLink%></p>
+            <p>Facebook Acccount Link?: <%= currentUser.facebookLink%></p>
+            <p>Twitter Acccount Link?: <%= currentUser.twitterLink%></p>
+            <p>Instagram Acccount Link?: <%= currentUser.instagramLink%></p>
         </div>
     </div>
 
