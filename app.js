@@ -16,16 +16,34 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(__dirname + "/public"));
 require("dotenv").config();
-    
-app.use(express.static(__dirname + "/public"));
 
  app.use(flash()); //include flash config so we can do     some messages
-
- //seedDB();
 
  var options = {
      useNewUrlParser: true
  };
+  //Passort config
+  app.use(require("express-session")({
+      secret: "omg yes please work!",
+      resave: false,
+      saveUninitialized: false
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.use(new LocalStrategy(User.authenticate()));
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
+
+
+ app.use(function (req, res, next) {
+     //console.log(req.user);
+     res.locals.currentUser = req.user;
+     res.locals.error = req.flash("error");
+     res.locals.success = req.flash("success");
+     next();
+ });
+
 mongoose.connect(process.env.DEVURL, options, function () {
     //mongoose.connection.db.dropDatabase();
 });
@@ -37,26 +55,7 @@ db.once('open', function () {
     // we're connected!
 });
 
- //Passort config
- app.use(require("express-session")({
-     secret: "omg yes please work!",
-     resave: false,
-     saveUninitialized: false
- }));
 
- app.use(passport.initialize());
- app.use(passport.session());
- passport.use(new LocalStrategy(User.authenticate()));
- passport.serializeUser(User.serializeUser());
- passport.deserializeUser(User.deserializeUser());
-
- app.use(function (req, res, next) {
-     //console.log(req.user);
-     res.locals.currentUser = req.user;
-     res.locals.error = req.flash("error");
-     res.locals.success = req.flash("success");
-     next();
- });
 
 // var commentRoutes = require("./routes/comments"),
 //     campgroundRoutes = require("./routes/campgrounds"),
@@ -68,6 +67,8 @@ var loginRoutes = require("./routes/login");
 app.use(loginRoutes);
 var homeRoutes = require("./routes/home");
 app.use(homeRoutes);
+var accountRoutes = require("./routes/account");
+app.use(accountRoutes);
 
 
 
