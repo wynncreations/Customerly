@@ -6,13 +6,16 @@
 
         <div>
             <p>Lets go ahead and link your first social media account to get started!</p>
-            <p>If you want to use only the default Reddit-Only view for now, click here. You will need to link your other social media accounts to include them in your view.</p>
+            <p>If you want to use only the default Reddit-Only view for now,<form class="form" method="post" action="../setdefault"><input type="submit" class="btn btn-small btn-primary" value="click here"></form>. You will need to link your other social media accounts to include them in your view.</p>
         </div>
         <div class="card card-body bg-light col-md-4">
-            <p>Reddit Acccount Link?: <%= currentUser.redditLink%></p>
-            <p>Facebook Acccount Link?: <%= currentUser.facebookLink%></p>
-            <p>Twitter Acccount Link?: <%= currentUser.twitterLink%></p>
-            <p>Instagram Acccount Link?: <%= currentUser.instagramLink%></p>
+            <h3>Account selections</h3>
+            <hr>
+            <p>Default account status:<strong class="float-right"><%= currentUser.useDefault%></strong></p>
+            <p>Reddit Acccount Link:<strong class="float-right"> <%= currentUser.redditLink%></strong></p>
+            <p>Facebook Acccount Link:<strong class="float-right"> <%= currentUser.facebookLink%></strong></p>
+            <p>Twitter Acccount Link:<strong class="float-right"> <%= currentUser.twitterLink%></strong></p>
+            <p>Instagram Acccount Link:<strong class="float-right"> <%= currentUser.instagramLink%></strong></p>
         </div>
     </div>
 
