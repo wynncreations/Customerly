@@ -3,6 +3,7 @@ var passport = require("passport");
 var middleware = require("../middleware");
 var User = require("../models/user");
 var mongoose = require("mongoose");
+var request = require('request');
 
 var router = express.Router({
     mergeParams: true
@@ -13,6 +14,17 @@ router.get("/default", middleware.isLoggedIn, function (req,res,next) {
     if(req.user.useDefault){
         res.render("default");
     }else{
+        //Lets get reddit.com best top 25 results, and send the data including title and link to default.ejs
+        
+
+
+
+
+
+
+
+
+
         //console.log(req.user.useDefault);
         res.render("account");
     }
