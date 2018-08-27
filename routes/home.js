@@ -12,19 +12,13 @@ var router = express.Router({
 router.get("/default", middleware.isLoggedIn, function (req,res,next) {
     
     if(req.user.useDefault){
+        //Lets get reddit.com best top 25 results, and send the data including title and link to default.ejs
+        request("reddit.com/best", function (error, response, body) {
+            console.log(body);
+        });
+
         res.render("default");
     }else{
-        //Lets get reddit.com best top 25 results, and send the data including title and link to default.ejs
-        
-
-
-
-
-
-
-
-
-
         //console.log(req.user.useDefault);
         res.render("account");
     }
