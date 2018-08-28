@@ -12,8 +12,19 @@
         <div class="card card-body bg-light col-md-4">
             <h3>Account selections</h3>
             <hr>
-            <p>Default account status:<strong class="float-right"><%= currentUser.useDefault%></strong></p>
-            <p>Reddit Acccount Link:<strong class="float-right"> <%= currentUser.redditLink%></strong></p>
+            <p>Default account status:
+                <strong class="float-right">
+                    <%= currentUser.useDefault%>
+                </strong>
+            </p>
+            <p>Reddit Acccount Link:
+                <strong class="float-right"> 
+                    <%= currentUser.redditLink%>
+                </strong>
+                <form class="form" method="post" action="/authreddit">
+                    <input type="submit" class="btn btn-success" value="Link Reddit">
+                </form>
+            </p>
             <p>Facebook Acccount Link:<strong class="float-right"> <%= currentUser.facebookLink%></strong></p>
             <p>Twitter Acccount Link:<strong class="float-right"> <%= currentUser.twitterLink%></strong></p>
             <p>Instagram Acccount Link:<strong class="float-right"> <%= currentUser.instagramLink%></strong></p>
