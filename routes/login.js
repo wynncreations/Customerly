@@ -1,5 +1,6 @@
 var express     = require("express");
 var passport    = require("passport");
+const middlware = require("../middleware");
 var router      = express.Router({
     mergeParams: true
 });
@@ -14,5 +15,9 @@ router.post("/login", passport.authenticate("local", {
             }),function(req,res){
 });
 
+router.get("/logout",middlware.isLoggedIn,(req,res,next)=>{
+    req.logout();
+    res.render("/");
+});
 
 module.exports = router;
